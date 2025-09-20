@@ -57,3 +57,4 @@ manivera/
 - TypeScript
 - Vite
 - ESLint
+
