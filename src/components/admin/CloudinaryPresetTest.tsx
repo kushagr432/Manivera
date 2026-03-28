@@ -32,7 +32,8 @@ const CloudinaryPresetTest: React.FC = () => {
       }
       
     } catch (error) {
-      setTestResult(`❌ Preset "${presetName}" error: ${error.message}`)
+      const msg = error instanceof Error ? error.message : String(error)
+      setTestResult(`❌ Preset "${presetName}" error: ${msg}`)
       return false
     } finally {
       setLoading(false)

@@ -151,7 +151,8 @@ export const uploadImage = async (file: File, path: string): Promise<string> => 
     return downloadURL
   } catch (error) {
     console.error('Image upload error:', error)
-    throw new Error(`Failed to upload image: ${error.message}`)
+    const msg = error instanceof Error ? error.message : String(error)
+    throw new Error(`Failed to upload image: ${msg}`)
   }
 }
 

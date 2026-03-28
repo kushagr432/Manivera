@@ -25,7 +25,8 @@ const CloudinaryTest: React.FC = () => {
       console.log('Cloud name test result:', response)
       
     } catch (error) {
-      setTestResult(`❌ Error testing cloud name: ${error.message}`)
+      const msg = error instanceof Error ? error.message : String(error)
+      setTestResult(`❌ Error testing cloud name: ${msg}`)
       console.error('Cloud name test error:', error)
     } finally {
       setLoading(false)
@@ -59,7 +60,8 @@ const CloudinaryTest: React.FC = () => {
       }
       
     } catch (error) {
-      setTestResult(`❌ Upload preset test error: ${error.message}`)
+      const msg = error instanceof Error ? error.message : String(error)
+      setTestResult(`❌ Upload preset test error: ${msg}`)
     } finally {
       setLoading(false)
     }
