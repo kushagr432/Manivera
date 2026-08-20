@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
+import { adminPath } from '../../config/env'
 import { auth } from '../../firebase/config'
 
 const AdminSetup: React.FC = () => {
@@ -103,7 +104,7 @@ const AdminSetup: React.FC = () => {
 
         <div className="setup-footer">
           <p>After creating your account, you can login to the admin panel.</p>
-          <a href="/admin" className="login-link">Go to Login</a>
+          <a href={adminPath()} className="login-link">Go to Login</a>
         </div>
       </div>
 

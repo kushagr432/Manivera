@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { adminPath } from '../config/env'
 import { useAdmin } from '../contexts/AdminContext'
 import { deleteProduct, updateProduct } from '../firebase/services'
 import { useFeaturedProducts } from '../hooks/useProducts'
@@ -252,7 +253,7 @@ const FeaturedCollectionsFirebase = () => {
               <div className="no-products">
                 <p>No products available in this collection yet.</p>
                 {isAuthenticated && (
-                  <a href="/admin" className="btn-luxury">Add Products</a>
+                  <a href={adminPath()} className="btn-luxury">Add Products</a>
                 )}
               </div>
             )}

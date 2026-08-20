@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { adminPath } from '../config/env'
 import { useAdmin } from '../contexts/AdminContext'
 import { useProducts } from '../hooks/useProducts'
 import { Product } from '../types/admin'
@@ -134,7 +135,7 @@ const ProductCategoriesFirebase = () => {
               <h3>No products found</h3>
               <p>No products available in the {selectedCategory} category yet.</p>
               {isAuthenticated && (
-                <a href="/admin" className="btn-luxury">Add Products</a>
+                <a href={adminPath()} className="btn-luxury">Add Products</a>
               )}
             </div>
           )}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { cloudinaryConfig } from '../../config/env'
 
 const CloudinaryTest: React.FC = () => {
   const [testResult, setTestResult] = useState('')
@@ -9,8 +10,8 @@ const CloudinaryTest: React.FC = () => {
     setTestResult('Testing Cloudinary connection...')
 
     try {
-      // Test with your current cloud name
-      const cloudName = 'dqdptzbbn'
+      // Test with the configured cloud name
+      const { cloudName } = cloudinaryConfig
       const testUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
       
       console.log('Testing URL:', testUrl)
@@ -37,8 +38,7 @@ const CloudinaryTest: React.FC = () => {
     setTestResult('Testing upload preset...')
 
     try {
-      const cloudName = 'dqdptzbbn'
-      const uploadPreset = 'ml_default'
+      const { cloudName, uploadPreset } = cloudinaryConfig
       
       const formData = new FormData()
       formData.append('upload_preset', uploadPreset)
@@ -72,9 +72,9 @@ const CloudinaryTest: React.FC = () => {
       <div style={{ marginBottom: '2rem' }}>
         <h3>Current Configuration:</h3>
         <ul>
-          <li><strong>Cloud Name:</strong> dqdptzbbn</li>
-          <li><strong>API Key:</strong> 616489553238932</li>
-          <li><strong>Upload Preset:</strong> ml_default</li>
+          <li><strong>Cloud Name:</strong> {cloudinaryConfig.cloudName}</li>
+          <li><strong>Upload Preset:</strong> {cloudinaryConfig.uploadPreset}</li>
+          <li><strong>Upload Folder:</strong> {cloudinaryConfig.uploadFolder}</li>
         </ul>
       </div>
 

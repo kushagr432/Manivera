@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import logo from '../assets/logo.png'
+import { adminPath, showAdminLinkInHeader } from '../config/env'
 import { smoothScrollTo } from '../utils/smoothScroll'
+
+interface NavItem {
+  name: string
+  href: string
+  onClick?: () => void
+  external?: boolean
+}
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -15,13 +23,16 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: 'Home', href: '#home', onClick: () => smoothScrollTo('home') },
     { name: 'Collections', href: '#collections', onClick: () => smoothScrollTo('collections') },
     { name: 'Categories', href: '#categories', onClick: () => smoothScrollTo('categories') },
     { name: 'About Us', href: '#about', onClick: () => smoothScrollTo('about') },
     { name: 'Contact', href: '#contact', onClick: () => smoothScrollTo('contact') },
-    { name: 'Admin', href: '/admin', external: true }
+    // Admin entry point; hide it in production with VITE_SHOW_ADMIN_LINK=false
+    ...(showAdminLinkInHeader
+      ? [{ name: 'Admin', href: adminPath(), external: true }]
+      : [])
   ]
 
   return (

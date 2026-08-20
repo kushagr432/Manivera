@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import logo from './assets/logo.png';
+import { adminPath } from './config/env';
 import { AdminProvider } from './contexts/AdminContext';
 
 // Main Website Components
@@ -64,8 +65,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<MainWebsite />} />
-          <Route path="/admin/setup" element={<AdminSetup />} />
-          <Route path="/admin/*" element={<AdminRouter />} />
+          <Route path={adminPath('setup')} element={<AdminSetup />} />
+          <Route path={`${adminPath()}/*`} element={<AdminRouter />} />
         </Routes>
       </Router>
     </AdminProvider>

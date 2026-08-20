@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { cloudinaryConfig } from '../../config/env'
 
 const CloudinaryPresetTest: React.FC = () => {
   const [testResult, setTestResult] = useState('')
@@ -9,7 +10,7 @@ const CloudinaryPresetTest: React.FC = () => {
     setTestResult(`Testing preset: ${presetName}`)
 
     try {
-      const cloudName = 'dqdptzbbn'
+      const { cloudName } = cloudinaryConfig
       
       const formData = new FormData()
       formData.append('upload_preset', presetName)

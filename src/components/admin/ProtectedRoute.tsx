@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
+import { adminPath } from '../../config/env'
 import { useAdmin } from '../../contexts/AdminContext'
 
 interface ProtectedRouteProps {
@@ -18,7 +19,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     )
   }
 
-  return isAuthenticated ? <>{children}</> : <Navigate to="/admin/login" replace />
+  return isAuthenticated ? <>{children}</> : <Navigate to={adminPath('login')} replace />
 }
 
 export default ProtectedRoute

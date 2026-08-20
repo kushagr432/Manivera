@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { adminPath } from '../../config/env'
 import { getCategories, getOrders, getProducts } from '../../firebase/services'
 import { AdminStats, Order, Product } from '../../types/admin'
 
@@ -127,12 +128,12 @@ const AdminDashboard: React.FC = () => {
         <div className="dashboard-section">
           <div className="section-header">
             <h2>Recent Products</h2>
-            <a href="/admin/products" className="view-all-link">View All</a>
+            <a href={adminPath('products')} className="view-all-link">View All</a>
           </div>
           
           {recentProducts.length === 0 ? (
             <div className="empty-state">
-              <p>No products yet. <a href="/admin/products">Add your first product</a></p>
+              <p>No products yet. <a href={adminPath('products')}>Add your first product</a></p>
             </div>
           ) : (
             <div className="products-list">
@@ -158,7 +159,7 @@ const AdminDashboard: React.FC = () => {
         <div className="dashboard-section">
           <div className="section-header">
             <h2>Recent Orders</h2>
-            <a href="/admin/orders" className="view-all-link">View All</a>
+            <a href={adminPath('orders')} className="view-all-link">View All</a>
           </div>
           
           {recentOrders.length === 0 ? (
@@ -193,19 +194,19 @@ const AdminDashboard: React.FC = () => {
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="actions-grid">
-          <a href="/admin/products" className="action-card">
+          <a href={adminPath('products')} className="action-card">
             <div className="action-icon">💎</div>
             <h3>Add Product</h3>
             <p>Add a new jewelry piece to your collection</p>
           </a>
           
-          <a href="/admin/categories" className="action-card">
+          <a href={adminPath('categories')} className="action-card">
             <div className="action-icon">📂</div>
             <h3>Manage Categories</h3>
             <p>Organize your products into categories</p>
           </a>
           
-          <a href="/admin/orders" className="action-card">
+          <a href={adminPath('orders')} className="action-card">
             <div className="action-icon">📦</div>
             <h3>View Orders</h3>
             <p>Check customer inquiries and orders</p>

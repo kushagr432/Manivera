@@ -1,17 +1,16 @@
-// Cloudinary configuration
-export const CLOUDINARY_CONFIG = {
-  cloudName: 'dqdptzbbn', // Your cloud name
-  apiKey: '616489553238932', // Your API key
-  apiSecret: 'G-Cnq8ZuFvN_djcUribTuzP9Fww',
-  uploadPreset: 'ml_default' // Upload preset for jewelry products
-}
+import { cloudinaryConfig } from '../config/env'
+
+// Cloudinary configuration, sourced from environment variables.
+// Only the values an unsigned browser upload needs live here; the API key and
+// secret are server-side credentials and are intentionally not bundled.
+export const CLOUDINARY_CONFIG = cloudinaryConfig
 
 // Upload image to Cloudinary (unsigned upload - no API key needed)
 export const uploadImageToCloudinary = async (file: File): Promise<string> => {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset)
-  formData.append('folder', 'jewelry-products') // Organize images in a folder
+  formData.append('folder', CLOUDINARY_CONFIG.uploadFolder) // Organize images in a folder
 
   try {
     console.log('Uploading to Cloudinary (unsigned)...', {

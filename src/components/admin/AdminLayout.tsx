@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../../assets/logo.png'
+import { adminPath } from '../../config/env'
 import { useAdmin } from '../../contexts/AdminContext'
 
 interface AdminLayoutProps {
@@ -19,11 +20,11 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   }
 
   const menuItems = [
-    { name: 'Dashboard', icon: '📊', path: '/admin' },
-    { name: 'Products', icon: '💎', path: '/admin/products' },
-    { name: 'Categories', icon: '📂', path: '/admin/categories' },
-    { name: 'Orders', icon: '📦', path: '/admin/orders' },
-    { name: 'Settings', icon: '⚙️', path: '/admin/settings' }
+    { name: 'Dashboard', icon: '📊', path: adminPath() },
+    { name: 'Products', icon: '💎', path: adminPath('products') },
+    { name: 'Categories', icon: '📂', path: adminPath('categories') },
+    { name: 'Orders', icon: '📦', path: adminPath('orders') },
+    { name: 'Settings', icon: '⚙️', path: adminPath('settings') }
   ]
 
   return (

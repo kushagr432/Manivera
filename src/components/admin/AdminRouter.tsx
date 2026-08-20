@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { adminPath } from '../../config/env'
 import { useAdmin } from '../../contexts/AdminContext'
 import AdminDashboard from './AdminDashboard'
 import AdminLayout from './AdminLayout'
@@ -67,7 +68,7 @@ const AdminRouter: React.FC = () => {
             Don't have an admin account yet?
           </p>
           <a 
-            href="/admin/setup" 
+            href={adminPath('setup')}
             style={{ 
               color: 'var(--color-gold)', 
               textDecoration: 'none',
