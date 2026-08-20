@@ -56,6 +56,10 @@ const FeaturedCollectionsFirebase = () => {
   }
 
   // Handle edit product
+  // NOTE: the button that calls this is currently commented out in the product
+  // card below, so TypeScript sees it as unused. Kept because the edit modal it
+  // opens is still wired up. Remove the suppression when the button is restored.
+  // @ts-ignore TS6133: entry point temporarily disabled in the UI
   const handleEditProduct = (product: Product) => {
     setEditingProduct(product)
     setEditFormData({
@@ -87,6 +91,8 @@ const FeaturedCollectionsFirebase = () => {
   }
 
   // Handle delete product
+  // NOTE: see handleEditProduct above — the calling button is commented out.
+  // @ts-ignore TS6133: entry point temporarily disabled in the UI
   const handleDeleteProduct = (product: Product) => {
     setProductToDelete(product)
     setShowDeleteConfirm(true)

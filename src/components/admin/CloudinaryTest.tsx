@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { cloudinaryConfig } from '../../config/env'
+import { getErrorMessage } from '../../utils/errors'
 
 const CloudinaryTest: React.FC = () => {
   const [testResult, setTestResult] = useState('')
@@ -26,7 +27,7 @@ const CloudinaryTest: React.FC = () => {
       console.log('Cloud name test result:', response)
       
     } catch (error) {
-      setTestResult(`❌ Error testing cloud name: ${error.message}`)
+      setTestResult(`❌ Error testing cloud name: ${getErrorMessage(error)}`)
       console.error('Cloud name test error:', error)
     } finally {
       setLoading(false)
@@ -59,7 +60,7 @@ const CloudinaryTest: React.FC = () => {
       }
       
     } catch (error) {
-      setTestResult(`❌ Upload preset test error: ${error.message}`)
+      setTestResult(`❌ Upload preset test error: ${getErrorMessage(error)}`)
     } finally {
       setLoading(false)
     }

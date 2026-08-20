@@ -1,4 +1,5 @@
 import { cloudinaryConfig } from '../config/env'
+import { getErrorMessage } from '../utils/errors'
 
 // Cloudinary configuration, sourced from environment variables.
 // Only the values an unsigned browser upload needs live here; the API key and
@@ -39,7 +40,9 @@ export const uploadImageToCloudinary = async (file: File): Promise<string> => {
     return data.secure_url
   } catch (error) {
     console.error('Cloudinary upload error:', error)
-    // throw new Error(`Failed to upload image to Cloudinary: ${error.message}`)
+    // Rethrow: ProductForm catches this and falls back to base64. Swallowing it
+    // here returned undefined and silently saved products with no image.
+    throw new Error(`Failed to upload image to Cloudinary: ${getErrorMessage(error)}`)
   }
 }
 

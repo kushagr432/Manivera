@@ -20,6 +20,7 @@ import {
 } from 'firebase/storage'
 import { Category, Order, Product } from '../types/admin'
 import { db, storage } from './config'
+import { getErrorMessage } from '../utils/errors'
 
 // Products Collection
 export const productsCollection = collection(db, 'products')
@@ -151,7 +152,7 @@ export const uploadImage = async (file: File, path: string): Promise<string> => 
     return downloadURL
   } catch (error) {
     console.error('Image upload error:', error)
-    throw new Error(`Failed to upload image: ${error.message}`)
+    throw new Error(`Failed to upload image: ${getErrorMessage(error)}`)
   }
 }
 
